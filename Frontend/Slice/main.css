@@ -1,0 +1,42 @@
+
+.general__container{
+    width: 100%;
+    height: 300px;
+    font-family: 'Open Sans';
+}
+.icon{
+    width: 64px;
+    height: 83px;
+
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.icon__border{
+    color: white;
+    height: 64px;
+    background-color: #4d648d;
+    border-radius: 200px;
+}
+
+.icon__inner{
+    height: 55px;
+    width: 55px;
+    display: inline-block;
+    background-color: #283655;
+    border-radius: 200px;
+    margin-left: 3.5px;
+    margin-top: 3.5px;
+}
+
+.icon__initial{
+    font-size: 32px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.icon__name{
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
