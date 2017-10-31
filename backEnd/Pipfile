@@ -7,6 +7,9 @@ name = "pypi"
 
 [packages]
 
+Flask = "*"
+pymongo = "*"
+Flask-Mail = "*"
 
 
 [dev-packages]
