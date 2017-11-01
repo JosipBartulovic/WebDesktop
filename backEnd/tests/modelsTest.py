@@ -1,3 +1,3 @@
-from webDesktop.dataModels import user
+from webDesktop.dataModels import userModel
 
-us = user.User()
+us = userModel.User()

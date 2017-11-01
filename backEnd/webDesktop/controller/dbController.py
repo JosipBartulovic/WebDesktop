@@ -1,5 +1,5 @@
 import pymongo
-from webDesktop.dataModels.user import User
+from webDesktop.dataModels.userModel import User
 
 
 class DbController:

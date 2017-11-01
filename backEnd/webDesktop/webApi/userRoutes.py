@@ -1,8 +1,11 @@
-from webDesktop import app
-from flask import jsonify
+from flask.blueprints import Blueprint
 
 
-@app.route('/test')
+user_routes = Blueprint('user_routes', __name__)
+
+
+@user_routes.route('/test', methods=['GET'])
 def test():
-    return jsonify({'Test': 1})
+    print('toeto')
+    return '<h1>TOETO</h1>'
 
