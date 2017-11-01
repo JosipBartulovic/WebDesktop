@@ -7,7 +7,8 @@ class User(model.Model):
             self.data = kwargs
         else:
             self.data = user_data
-        assert list(self.data.keys()) == ['mail', 'password', 'icons', 'widgets']
+        assert (list(self.data.keys()) == ['mail', 'password', 'icons', 'widgets'] or
+                list(self.data.keys()) == ['_id', 'mail', 'password', 'icons', 'widgets'])
 
     def __repr__(self):
         return str(self.data)
