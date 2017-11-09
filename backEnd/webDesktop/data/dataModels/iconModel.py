@@ -1,4 +1,4 @@
-from webDesktop.dataModels import model
+from webDesktop.data.dataModels import model
 
 
 class Icon(model.Model):
