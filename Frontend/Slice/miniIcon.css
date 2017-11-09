@@ -1,0 +1,46 @@
+/*MINI ICON*/
+
+.mini__icon{
+    width: 12px;
+    position: absolute;
+
+    margin-top: -39px;
+    margin-left: 12px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;     
+    -ms-user-select: none;
+}
+
+.mini__icon__border{
+    position: relative;
+    color: white;
+    width: 12px;
+    height: 12px;
+    background-color: #4d648d;
+    border-radius: 200px;
+    padding: 0,0,0,0;
+}
+
+.mini__icon__inner{
+    height: 10.125px;
+    width: 10.125px;
+    display: inline-block;
+    background-color: #283655;
+    border-radius: 200px;
+    position: absolute;
+
+    margin-left: -5.0625px;
+    margin-top: -5.0625px;
+    left: 50%;
+    top: 50%;
+}
+
+.mini__icon__initial{
+    font-size: 6px;
+    text-align: center;
+    margin-top: 1px;
+}
+
+
+
