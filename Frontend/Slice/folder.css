@@ -4,8 +4,10 @@
     width: 64px;
     height: 64px;
     margin-top: 50px;
-    margin-left: 50px;   
+    margin-left: 250px;   
     color: white;
+    float: left;
+    position: absolute;
 }
 
 .folder__background{
