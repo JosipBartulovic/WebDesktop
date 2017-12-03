@@ -12,3 +12,6 @@ class Model:
             raise KeyError("Key does not exist")
 
     data = dict()
+
+    def __repr__(self):
+        return str(self.data)

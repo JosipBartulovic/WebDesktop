@@ -7,9 +7,10 @@ name = "pypi"
 
 [packages]
 
-Flask = "*"
+flask = "*"
 pymongo = "*"
-Flask-Mail = "*"
+flask-mail = "*"
+flask-cors = "*"
 
 
 [dev-packages]

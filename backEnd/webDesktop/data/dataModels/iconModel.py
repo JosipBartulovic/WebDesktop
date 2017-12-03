@@ -1,6 +1,5 @@
-from webDesktop.data.dataModels import model
-
-
-class Icon(model.Model):
-    def __init__(self):
-        self.data = dict(_id=None, url=None, image=None)
+class Icon:
+    def __init__(self, name, url, image, letter):
+        self.url = url
+        self.image = image
+        self.letter = letter
