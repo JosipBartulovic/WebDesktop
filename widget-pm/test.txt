@@ -1,0 +1,4 @@
+<template>
+    <h1>Lorem</h1>
+    <div>Lorem Ipsum</div>
+</template>
