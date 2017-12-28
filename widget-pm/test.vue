@@ -6,11 +6,9 @@
 
 <script>
     module.exports = {
-        data: () => {
-            return {
-                test: 'Test'
-            }
-        }
+        data: () => ({
+                test: "test"
+            })
     }
 </script>
 

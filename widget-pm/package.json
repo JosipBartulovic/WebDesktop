@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "commander": "^2.12.2",
+    "node-persist": "^2.1.0",
+    "request": "^2.83.0",
+    "sync-request": "^4.1.0",
     "util": "^0.10.3"
   }
 }

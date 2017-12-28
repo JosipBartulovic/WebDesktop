@@ -1,18 +1,20 @@
 "use strict";
 
-var util = require('util');
+const util = require('util');
 
 function vueParser(vueFileText){
 
-    let getTagType = function(tag){
+    const getTagType = (tag) => {
         let tagType = '';
         if(tag[0] != '<'){
             throw new Error('Provided "tag" is not a valid HTML tag');
-        }else{
+        }
+        else {
             for(let i = 1; i<tag.length; i++){
                 if(tag[i] == ' ' || tag[i] == '>'){
                     break;
-                }else{
+                }
+                else {
                     tagType += tag[i]
                 }
             }
@@ -20,7 +22,7 @@ function vueParser(vueFileText){
         return tagType;
     }
 
-    let getHtmlBlock = function(tagType, html){
+    const getHtmlBlock = function(tagType, html){
         let blockStart = null;
         let blockEnd = null;
         for(let i=0; i<html.length; i++){
@@ -41,9 +43,17 @@ function vueParser(vueFileText){
             }
         }
         if(blockStart == null || blockEnd == null){
-            throw new Error(util.format('Error parsing html block "<%s>"', tagType));
+            throw new Error(`Error parsing html block "${tagType}"`);
         }
-        return html.slice(blockStart, blockEnd + 1);
+        let block = ''
+        let specialCharacters = ['\n', '\r', '\t'];
+        for(let i=blockStart; i<=blockEnd; i++){
+            if(specialCharacters.indexOf(html[i]) != -1){
+                continue
+            }
+            block += html[i];
+        }
+        return block
     }
     return{
         template: getHtmlBlock('template', vueFileText),
