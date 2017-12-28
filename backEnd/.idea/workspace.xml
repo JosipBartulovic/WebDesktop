@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef0b9061-be78-453f-a2b7-115fd84909e6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run_script.py" afterPath="$PROJECT_DIR$/run_script.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/__init__.py" afterPath="$PROJECT_DIR$/webDesktop/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/controller/dbController.py" afterPath="$PROJECT_DIR$/webDesktop/controller/dbController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/data/dataModels/iconModel.py" afterPath="$PROJECT_DIR$/webDesktop/data/dataModels/iconModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/data/dataModels/userModel.py" afterPath="$PROJECT_DIR$/webDesktop/data/dataModels/userModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/data/dataModels/widgetModel.py" afterPath="$PROJECT_DIR$/webDesktop/data/dataModels/widgetModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/webApi/userRoutes.py" afterPath="$PROJECT_DIR$/webDesktop/webApi/userRoutes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webDesktop/webApi/widgetRoutes.py" afterPath="$PROJECT_DIR$/webDesktop/webApi/widgetRoutes.py" />
-    </list>
+    <list default="true" id="ef0b9061-be78-453f-a2b7-115fd84909e6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
