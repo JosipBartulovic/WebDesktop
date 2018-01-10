@@ -1,4 +1,13 @@
-import chmar from './dependencies/smth'
+"use strict";
 
-setTimeout(() => { console.log("ES2015 FTW"); }, 1000);
-chmar();
+require('./components/init');
+const widgetMng = require('./components/widget-manager');
+const Template = require('./components/template');
+
+window.onload = function () {
+    document.getElementById('getWidget')
+    .addEventListener('click', () => {
+        widgetMng.getWidget('test');
+        widgetMng.getWidget('testis');
+    });
+};
