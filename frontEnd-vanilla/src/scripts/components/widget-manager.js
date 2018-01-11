@@ -9,9 +9,8 @@ module.exports = {
                 console.log(JSON.parse(body).Error);
             }else{
                 body = JSON.parse(body);
-                let code = body.code;
                 let widget = document.createElement('widget');
-                widget.innerHTML += code;
+                widget.innerHTML += body.code;
                 document.getElementById('widgets').appendChild(widget);
                 setTimeout(widget.getElementsByTagName('script')[0].innerHTML, 1);
             }
