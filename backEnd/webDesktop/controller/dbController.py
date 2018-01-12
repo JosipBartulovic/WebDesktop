@@ -43,5 +43,12 @@ class DbWidgetController:
     def add_widget(self, widget):
         self.db.Widgets.insert_one({'_id': widget._id,
                                     'name': widget.name,
-                                    'author': widget.author,
-                                    'dir': widget.file_dir})
+                                    'author': widget.author})
+
+    def get_widget(self, name):
+        try:
+            return {'widget': next(self.db.Widgets.find({'name': name})),
+                    'code': open('././widgets/{0}.html'.format(name), 'r').read()}
+        except StopIteration:
+            return {'Error': 'Widget with name "{0}" does not exit'.format(name)}
+

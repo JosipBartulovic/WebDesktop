@@ -1,6 +1,7 @@
 from flask.blueprints import Blueprint
 from flask import request
 from flask import jsonify
+
 from webDesktop.data.dataModels.widgetModel import Widget
 from webDesktop .controller.dbController import DbWidgetController
 
@@ -18,10 +19,18 @@ def add_widget():
     try:
         widget = Widget(
             request.form['name'],
-            request.form['vue'],
-            request.form['author']
+            request.form['author'],
+            vue=request.form['vue']
         )
     except KeyError:
-        return {'Error': 'Invalid request'}
+        return jsonify({'Error': 'Invalid request'})
+    except FileExistsError:
+        return jsonify({'Error': 'Widget with same name already exists'})
+
     DbWidgetController().add_widget(widget)
     return jsonify(True)
+
+
+@widget_routes.route('/get', methods=['GET'])
+def get_widget():
+    return jsonify(DbWidgetController().get_widget(request.args['name']))

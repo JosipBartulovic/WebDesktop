@@ -1,6 +1,7 @@
 <template>
   <div class="desktop">
     <center></center>
+    <button v-on:click="fetchVue()">click me</button>
   </div>
 </template>
 
@@ -11,10 +12,16 @@
     name: 'Desktop',
     
     data: () => {
-      return {
-        
+      return { 
+        }
+      },
+    
+    methods: {
+      fetchVue: function(){
+        this.$http
       }
     },
+    
 
     components: {Shortcut}
   }

@@ -2,7 +2,7 @@ const authTemplate = require('./auth-template');
 
 module.exports = {
     authNeeded: function(){
-        return window.localStorage.getItem('User') == null
+        return window.localStorage.getItem('user') == null
     },
     
     renderAuth: function(){

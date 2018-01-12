@@ -7,7 +7,7 @@ class User:
         self.password = password
         self.icons = icons
         self.widgets = widgets
-        self._id = id(self) if not self._id else _id
+        self._id = id(self) if not _id else _id
 
     def add_icon(self, icon):
         self.icons.append(icon.__dict__)

@@ -11,7 +11,7 @@ module.exports = new Template(
     <button id='login'>Login</button>
     `,
     
-    function(){
+    () => {
         document.getElementById('login').addEventListener('click', () => {
             let mail = document.getElementById('login-mail').value;
             let password = document.getElementById('login-password').value;
@@ -22,7 +22,7 @@ module.exports = new Template(
                     requestHandle.handle(body)
                         .then((res) => {
                             console.log(res)
-                            localStorage.setItem('user', res)
+                            localStorage.setItem('user', JSON.stringify(res));
                         })
                         .catch((err) => {
                             console.log(err)

@@ -10,10 +10,10 @@ const storage = require('./components/storage');
 const pusher = require('./components/pusher');
 
 program
-    .command('push <file>')
-    .action(file => {
+    .command('push <name> <file>')
+    .action((name, file) => {
         try {
-            pusher.push('chma2r', file);
+            pusher.push(name, file);
         }
         catch (ex) {
             console.log(ex);
@@ -23,8 +23,7 @@ program
 program
     .command('parse <file>')
     .action(file => {
-        const data = fs.readFileSync(file, 'utf-8');
-        console.log({data: parser2(data)});
+        console.log({data: parser2(fs.readFileSync(file, 'utf-8'))});
     })
 
 program
