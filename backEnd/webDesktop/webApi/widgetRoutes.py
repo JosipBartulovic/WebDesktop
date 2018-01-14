@@ -20,7 +20,7 @@ def add_widget():
         widget = Widget(
             request.form['name'],
             request.form['author'],
-            vue=request.form['vue']
+            code=request.form['vue']
         )
     except KeyError:
         return jsonify({'Error': 'Invalid request'})

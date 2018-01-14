@@ -15,8 +15,5 @@ def test():
 
 @user_routes.route('/get', methods=['GET'])
 def get_user():
-    user = DbUserController().get_user(request.args['mail'], request.args['password'])
-    if not user:
-        return jsonify({'Error': 'Wrong email or password'})
-    else:
-        return jsonify(user.__dict__)
+    return jsonify(DbUserController().get_user(request.args['mail'], request.args['password']))
+

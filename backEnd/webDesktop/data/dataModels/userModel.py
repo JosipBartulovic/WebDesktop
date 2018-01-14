@@ -1,6 +1,3 @@
-from webDesktop.data.DTO.userDTO import UserDTO
-
-
 class User:
     def __init__(self, mail, password, _id=None, icons=[], widgets=[]):
         self.mail = mail
@@ -12,10 +9,9 @@ class User:
     def add_icon(self, icon):
         self.icons.append(icon.__dict__)
 
-    @staticmethod
-    def model_to_dto(user):
-        return UserDTO(user)
-
-    @staticmethod
-    def dto_to_model(dto, get_user_callback):
-        return get_user_callback(dto['mail'])
+    def iterator(self, dto=True):
+        yield ('_id', self._id)
+        yield ('mail', self.mail)
+        yield ('icons', self.icons)
+        yield ('widgets', self.widgets)
+        (yield ('password', self.password)) if not dto else None
