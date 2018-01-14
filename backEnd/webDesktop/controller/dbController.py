@@ -1,4 +1,5 @@
 import pymongo
+from os import listdir
 from webDesktop.data.dataModels.userModel import User
 from webDesktop.data.dataModels.widgetModel import Widget
 
@@ -18,7 +19,7 @@ class DbUserController:
             return {'Error': 'User "{0}" does not exit'.format(mail)}
 
     def get_all_users(self):
-        return self.db.Users.find()
+        return list(map(lambda user_data: dict(User(**user_data).iterator()) ,self.db.Users.find()))
 
     def update_user(self, user):
         self.db.Users.update({'mail': user['mail']}, {'$set': dict(user.iterator(dto=False))})
@@ -34,7 +35,16 @@ class DbWidgetController:
         self.db = self.client.WebDesktopDB
 
     def add_widget(self, widget):
-        self.db.Widgets.insert_one(dict(widget))
+        if widget.name+'.html' in listdir('./././widgets'):
+            try:
+                self.get_widget(widget.name)['author'] == widget.author
+                widget.write_code()
+            except KeyError:
+                return {'Error': 'Widget with name "{}" already exists'.format(widget.name)}
+        else:
+            widget.write_code()
+            self.db.Widgets.insert_one(dict(widget.iterator()))
+        return True
 
     def get_widget(self, name):
             widget_data = self.db.Widgets.find_one({'name': name})
@@ -42,3 +52,13 @@ class DbWidgetController:
                 return dict(Widget(**self.db.Widgets.find_one({'name': name})).iterator(return_code=True))
             return {'Error': 'Widget with name "{0}" does not exit'.format(name)}
 
+    def get_all_widgets(self):
+        return list(
+            filter(
+                lambda widget: not widget['dev'],
+                map(
+                    lambda widget_data: dict(Widget(**widget_data).iterator(return_code=True)),
+                    self.db.Widgets.find()
+                )
+            )
+        )

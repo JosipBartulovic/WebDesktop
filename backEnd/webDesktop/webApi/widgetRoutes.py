@@ -14,23 +14,29 @@ def test():
     return jsonify("TestTest")
 
 
-@widget_routes.route('/add', methods=['POST'])
+@widget_routes.route('/push', methods=['POST'])
 def add_widget():
-    try:
-        widget = Widget(
-            request.form['name'],
-            request.form['author'],
-            code=request.form['vue']
-        )
-    except KeyError:
-        return jsonify({'Error': 'Invalid request'})
-    except FileExistsError:
-        return jsonify({'Error': 'Widget with same name already exists'})
+    request.form = (dict(map(lambda a: (a[0],a[1][0]), list(dict(request.form).items()))))
+    widget = Widget(**request.form)
+    return jsonify(DbWidgetController().add_widget(widget))
 
-    DbWidgetController().add_widget(widget)
-    return jsonify(True)
+
+@widget_routes.route('/publish', methods=['POST'])
+def publish_widget():
+    pass
+
+
+@widget_routes.route('/push', methods=['POST'])
+def push_widget():
+    return jsonify(DbWidgetController().get_widget(request.args['name']))
 
 
 @widget_routes.route('/get', methods=['GET'])
 def get_widget():
     return jsonify(DbWidgetController().get_widget(request.args['name']))
+
+
+@widget_routes.route('/get/all', methods=['GET'])
+def get_all_widgets():
+    return jsonify(DbWidgetController().get_all_widgets_dict())
+

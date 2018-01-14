@@ -16,4 +16,3 @@ def test():
 @user_routes.route('/get', methods=['GET'])
 def get_user():
     return jsonify(DbUserController().get_user(request.args['mail'], request.args['password']))
-

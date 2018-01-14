@@ -8,6 +8,7 @@ const fs = require('fs');
 const auth = require('./components/authenticate');
 const storage = require('./components/storage');
 const pusher = require('./components/pusher');
+const publisher = require('./components/publisher');
 
 program
     .command('push <name> <file>')
@@ -19,6 +20,12 @@ program
             console.log(ex);
         }
     });
+
+program
+    .command('publish <name>')
+    .action((name) =>{
+        publisher.publish(name);
+    })
 
 program
     .command('parse <file>')
