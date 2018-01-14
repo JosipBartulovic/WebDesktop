@@ -19,7 +19,12 @@ class DbUserController:
             return {'Error': 'User "{0}" does not exit'.format(mail)}
 
     def get_all_users(self):
-        return list(map(lambda user_data: dict(User(**user_data).iterator()) ,self.db.Users.find()))
+        return list(
+            map(
+                lambda user_data: dict(User(**user_data).iterator()),
+                self.db.Users.find()
+            )
+        )
 
     def update_user(self, user):
         self.db.Users.update({'mail': user['mail']}, {'$set': dict(user.iterator(dto=False))})
@@ -50,15 +55,23 @@ class DbWidgetController:
             widget_data = self.db.Widgets.find_one({'name': name})
             if widget_data:
                 return dict(Widget(**self.db.Widgets.find_one({'name': name})).iterator(return_code=True))
-            return {'Error': 'Widget with name "{0}" does not exit'.format(name)}
+            return {'Error': 'Widget with name "{}" does not exit'.format(name)}
 
     def get_all_widgets(self):
         return list(
             filter(
-                lambda widget: not widget['dev'],
+                lambda widget: widget['dev'] == 'false',
                 map(
                     lambda widget_data: dict(Widget(**widget_data).iterator(return_code=True)),
                     self.db.Widgets.find()
                 )
             )
         )
+
+    def publish_widget(self, author, name):
+        widget = self.db.Widgets.find_one({'name': name, 'author': author})
+        widget['dev'] = 'false'
+        if widget:
+            self.db.Widgets.update({'name': widget['name'], 'author': widget['author']}, {'$set': widget})
+            return True
+        return {'Error': 'Widget with name {} does not exist'.format(name)}
