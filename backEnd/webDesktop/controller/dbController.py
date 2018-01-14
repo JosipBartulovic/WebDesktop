@@ -1,5 +1,10 @@
 import pymongo
 from webDesktop.data.dataModels.userModel import User
+from webDesktop.data.dataModels.widgetModel import Widget
+
+def _getter():
+    pass
+
 
 class DbUserController:
     def __init__(self, db_address='mongodb://127.0.0.1:27017'):
@@ -11,18 +16,10 @@ class DbUserController:
 
     def get_user(self, mail, password):
         try:
-            user_data = next(self.db.Users.find({'mail': mail, 'password': password}))
+            user_data = self.db.Users.find_one({'mail': mail, 'password': password})
+            return User.model_to_dto(User(**user_data))
         except StopIteration:
-            return None
-
-        else:
-            return User.model_to_dto(User(
-                user_data['mail'],
-                user_data['password'],
-                _id=user_data['_id'],
-                icons=user_data['icons'],
-                widgets=user_data['widgets']
-            ))
+            return {'Error': 'User "{0}" does not exit'.format(mail)}
 
     def get_all_users(self):
         return self.db.Users.find()
@@ -41,14 +38,11 @@ class DbWidgetController:
         self.db = self.client.WebDesktopDB
 
     def add_widget(self, widget):
-        self.db.Widgets.insert_one({'_id': widget._id,
-                                    'name': widget.name,
-                                    'author': widget.author})
+        self.db.Widgets.insert_one(dict(widget))
 
     def get_widget(self, name):
         try:
-            return {'widget': next(self.db.Widgets.find({'name': name})),
-                    'code': open('././widgets/{0}.html'.format(name), 'r').read()}
+            return dict(Widget(**self.db.Widgets.find_one({'name': name})))
         except StopIteration:
             return {'Error': 'Widget with name "{0}" does not exit'.format(name)}
 

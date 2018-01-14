@@ -1930,5 +1930,5 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           desktop.clearAndRender();
         }
       };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_a2e5caa0.js", "/");
+    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_27e4350c.js", "/");
   }, { "./components/auth/auth": 7, "./components/desktop/desktop-template": 8, "./components/init": 10, "./components/widget-manager": 12, "buffer": 3, "e/U+97": 5 }] }, {}, [13]);
