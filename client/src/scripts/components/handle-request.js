@@ -1,9 +1,14 @@
+const request = require('browser-request');
+
 module.exports = {
-    handle: function(body){
+    get: function(url){
         return new Promise((resolve, reject) => {
-            body = JSON.parse(body);
-            if(body.Error) reject(body.Error)
-            else resolve(body)
+            request.get(url, (err, res, body) => {
+                body = JSON.parse(body);
+                if(err) reject(err);
+                else if(body.Error) reject(body.Error);
+                else resolve(body);
+            })
         })
     }
 }
