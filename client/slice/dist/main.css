@@ -441,19 +441,19 @@ template {
        background-size: 16px 16px; }
 
 .icon__hover__container {
-  position: relative;
   float: right;
-  width: 0px;
-  color: transparent;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
   text-align: center;
   -webkit-transition: all ease-in-out 0.2s;
   -o-transition: all ease-in-out 0.2s;
   -moz-transition: all ease-in-out 0.2s;
   transition: all ease-in-out 0.2s;
-  margin-bottom: 6px; }
+  margin-bottom: 6px;
+  width: 0px;
+  max-height: 128px;
+  overflow: hidden; }
 
 .icon__hover {
   display: block;
@@ -461,16 +461,17 @@ template {
   padding-bottom: 6px;
   background-color: lightgray;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+     -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5); }
 
 .icon:hover + .icon__hover__container {
-  color: black;
   width: 100px;
   -webkit-transition: all ease-in-out 0.2s;
   -o-transition: all ease-in-out 0.2s;
   -moz-transition: all ease-in-out 0.2s;
-  transition: all ease-in-out 0.2s; }
+  transition: all ease-in-out 0.2s;
+  overflow-x: none;
+  overflow-y: auto; }
 
 .icon__link {
   display: block;
@@ -479,5 +480,5 @@ template {
   height: 32px;
   background-color: white;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5); }
+     -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.5); }
