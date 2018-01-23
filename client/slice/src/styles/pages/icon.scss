@@ -1,0 +1,67 @@
+.icon__container{
+    display: inline-block;
+    margin: 40px 20px 20px 40px;
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
+}
+.icon{
+    position: relative;
+    width: 32px;
+    height: 32px;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    background-color: white;
+    color: transparent;
+    float: left;
+}
+.icon__favicon{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 16px;
+    height: 16px;
+    background-image: url("../assets/youtube.svg");
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+.icon__hover__container{
+    position: relative;
+    float: right;
+    width: 0px;
+    color: transparent;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    text-align: center;
+    transition: all ease-in-out 0.2s;
+    margin-bottom: 6px;
+}
+.icon__hover{
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: lightgray;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+}
+.icon:hover+.icon__hover__container{
+    color: black;
+    width: 100px;
+    transition: all ease-in-out 0.2s;
+}
+.icon__link{
+    display: block;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 32px;
+    background-color: white;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+}
+
+
