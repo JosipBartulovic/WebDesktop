@@ -12,10 +12,16 @@ class DbUserController:
     def register_user(self, user):
         self.db.Users.insert(dict(user.iterator(dto=False)))
 
-    def get_user(self, mail, password):
+    def get_user_data(self, mail, password):
             user_data = self.db.Users.find_one({'mail': mail, 'password': password})
             if user_data:
                 return dict(User(**user_data).iterator())
+            return {'Error': 'User "{0}" does not exit'.format(mail)}
+
+    def get_user_object(self, mail):
+            user_data = self.db.Users.find_one({'mail': mail})
+            if user_data:
+                return User(**user_data)
             return {'Error': 'User "{0}" does not exit'.format(mail)}
 
     def get_all_users(self):
@@ -27,7 +33,7 @@ class DbUserController:
         )
 
     def update_user(self, user):
-        self.db.Users.update({'mail': user['mail']}, {'$set': dict(user.iterator(dto=False))})
+            self.db.Users.update({'mail': user.mail}, {'$set': dict(user.iterator(dto=False))})
 
     def add_icon_to_user(self, icon, user):
         user.add_icon(icon)
@@ -51,6 +57,14 @@ class DbWidgetController:
             self.db.Widgets.insert_one(dict(widget.iterator()))
         return True
 
+    def publish_widget(self, author, name):
+        widget = self.db.Widgets.find_one({'name': name, 'author': author})
+        if widget:
+            widget['dev'] = 'false'
+            self.db.Widgets.update({'name': widget['name'], 'author': widget['author']}, {'$set': widget})
+            return True
+        return {'Error': 'Widget with name {} does not exist'.format(name)}
+
     def get_widget(self, name):
             widget_data = self.db.Widgets.find_one({'name': name})
             if widget_data:
@@ -68,10 +82,3 @@ class DbWidgetController:
             )
         )
 
-    def publish_widget(self, author, name):
-        widget = self.db.Widgets.find_one({'name': name, 'author': author})
-        widget['dev'] = 'false'
-        if widget:
-            self.db.Widgets.update({'name': widget['name'], 'author': widget['author']}, {'$set': widget})
-            return True
-        return {'Error': 'Widget with name {} does not exist'.format(name)}

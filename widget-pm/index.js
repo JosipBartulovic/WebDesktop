@@ -1,16 +1,31 @@
 #!/usr/bin/env node
 "use strict";
 
-const vueParser = require('./components/vueParser');
-
 const program = require('commander');
 const fs = require('fs');
-const auth = require('./components/authenticate');
-const storage = require('./components/storage');
-const pusher = require('./components/pusher');
-const publisher = require('./components/publisher');
+const init = require('./commands/init/command');
+const push = require('./commands/push/command-push');
+const publish = require('./commands/publish/command-publish');
 
 program
+    .command('init')
+    .action(() => {
+        init();
+    })
+
+program
+    .command('push')
+    .action(() => {
+            push();
+    });
+
+program
+    .command('publish')
+    .action(() =>{
+        publish();
+    });
+
+    /* program
     .command('push <name> <file>')
     .action((name, file) => {
         try {
@@ -21,11 +36,7 @@ program
         }
     });
 
-program
-    .command('publish <name>')
-    .action((name) =>{
-        publisher.publish(name);
-    })
+
 
 program
     .command('parse <file>')
@@ -42,7 +53,11 @@ program
 program
     .command('user')
     .action(() => {
-        console.log(storage.getUser().mail);
-    })
+        if(storage.getUser()){
+            console.log(storage.getUser().mail);
+        }else{
+            console.log("To authenticante use widgetpm auth <mail> <password>");
+        }
+    }) */
 
 program.parse(process.argv)

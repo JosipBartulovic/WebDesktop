@@ -1,0 +1,57 @@
+.shop__container{
+    width: 220px;
+    height: 270px;
+    margin: 20px 0px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.1);
+    overflow: none;
+}
+.shop__header{
+    background-color: $red;
+    height: 33px;
+    color: white;
+    font-size: 14px;
+    line-height: 33px;
+    text-align: center;
+}
+.shop__footer{
+    height: 33px;
+}
+.shop__button{
+    flex-grow: 1;
+}
+
+.shop__icon--first{
+    background-image: url("../assets/info.svg");
+}
+.shop__icon--second{
+    background-image: url("../assets/download.svg");
+}
+.shop__item-container{
+    width: 100%;
+    height: 204px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.shop__item--first{
+    background-image: url("../assets/clock__analog.png");
+    background-size: 151.5px 151.5px ;
+}
+.shop__item--second{
+    background-image: url("../assets/clock__digital.png");
+    background-size:  151.5px  75.75px;
+}
+.shop__item--third{
+    background-image: url("../assets/calendar.png");
+    background-size: 151.5px 151.5px ;
+}
+.shop__container--second{
+    left: 520px;
+}
+.shop__container--third{
+    left: 760px;
+}

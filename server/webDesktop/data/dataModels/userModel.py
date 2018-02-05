@@ -9,6 +9,10 @@ class User:
     def add_icon(self, icon):
         self.icons.append(icon.__dict__)
 
+    def add_widget(self, widget_name):
+        if widget_name not in self.widgets:
+            self.widgets.append(widget_name)
+
     def iterator(self, dto=True):
         yield ('_id', self._id)
         yield ('mail', self.mail)

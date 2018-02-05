@@ -25,7 +25,6 @@ def test():
 
 @widget_routes.route('/push', methods=['POST'])
 def add_widget():
-    print(request.form)
     request.form = form_data_normalizer(request.form)
     widget = Widget(**request.form)
     return jsonify(DbWidgetController().add_widget(widget))
@@ -34,8 +33,7 @@ def add_widget():
 @widget_routes.route('/publish', methods=['POST'])
 def publish_widget():
     request.form = form_data_normalizer(request.form)
-    DbWidgetController().publish_widget(**request.form)
-    return jsonify(True)
+    return jsonify(DbWidgetController().publish_widget(**request.form))
 
 
 @widget_routes.route('/push', methods=['POST'])
@@ -51,4 +49,3 @@ def get_widget():
 @widget_routes.route('/get/all', methods=['GET'])
 def get_all_widgets():
     return jsonify(DbWidgetController().get_all_widgets())
-
