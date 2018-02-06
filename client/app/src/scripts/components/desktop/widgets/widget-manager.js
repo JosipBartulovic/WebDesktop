@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require('browser-request');
-const requestHandle = require('../../handle-request');
+const requestHandle = require('../../building_elements/handle-request');
 
 module.exports = {
     getWidget: function(name){

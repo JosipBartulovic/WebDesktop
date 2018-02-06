@@ -1,4 +1,4 @@
-const Template = require('../../template');
+const Template = require('../../building_elements/template');
 const widgetMng = require('./widget-manager');
 const widget = require('./widget-generator');
 

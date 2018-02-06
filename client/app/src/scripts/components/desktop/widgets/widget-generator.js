@@ -1,4 +1,4 @@
-const Template = require('../../template');
+const Template = require('../../building_elements/template');
 
 module.exports = (data) => {
     console.log(data)

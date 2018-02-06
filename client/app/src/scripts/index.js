@@ -1,13 +1,14 @@
 "use strict";
 
 require('./components/init');
-const auth = require('./components/auth/auth')
-const desktop = require('./components/desktop/desktop-template')
+const login = require('./components/login/login-controller');
+const desktop = require('./components/desktop/desktop-template');
+const animate = require('./components/building_elements/animations');
 
 
 window.onload = function () {
-    if (auth.authNeeded()){
-        auth.renderAuth();
+    if (login.isLogedIn()){
+        login.renderLoginScreen();
     }else{
         desktop.clearAndRender();
     }

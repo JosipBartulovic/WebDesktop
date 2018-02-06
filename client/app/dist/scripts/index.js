@@ -2,6 +2,8 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 (function e(t, n, r) {
   function s(o, u) {
     if (!n[o]) {
@@ -15,6 +17,240 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     s(r[o]);
   }return s;
 })({ 1: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      module.exports = {
+        fade_out: function fade_out(template, delay) {
+          var after = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+          template.element.setAttribute('style', "\n            transition: all ease-in " + delay + "s;\n            opacity: 0;\n            ");
+          if (after) setTimeout(after, delay * 1000);
+        }
+
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\building_elements\\animations.js", "/components\\building_elements");
+  }, { "9FoBSB": 18, "buffer": 16 }], 2: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var request = require('browser-request');
+
+      module.exports = {
+        get: function get(url) {
+          return new Promise(function (resolve, reject) {
+            request.get(url, function (err, res, body) {
+              body = JSON.parse(body);
+              if (err) reject(err);else if (body.Error) reject(body.Error);else resolve(body);
+            });
+          });
+        }
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\building_elements\\handle-request.js", "/components\\building_elements");
+  }, { "9FoBSB": 18, "browser-request": 15, "buffer": 16 }], 3: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      module.exports = function Template(_ref, script) {
+        var _this = this;
+
+        var markup = _ref.markup,
+            data = _ref.data;
+
+
+        for (var key in data) {
+          var replace = "{{" + key + "}}";
+          markup = markup.replace(new RegExp(replace, 'g'), data[key]);
+        }
+
+        this.script = script.bind(this);
+        this.data = data;
+        this.element = document.createElement('wd-template');
+        this.element.innerHTML = markup;
+
+        this.addToRender = function () {
+          document.getElementById('render').appendChild(_this.element);
+          _this.script();
+        };
+
+        this.clearAndRender = function () {
+          document.getElementById('render').innerHTML = '';
+          document.getElementById('render').appendChild(_this.element);
+          _this.script();
+        };
+
+        this.clearSelf = function () {
+          _this.element.innerHTML = '';
+        };
+
+        this.removeFromDocument = function () {
+          document.body.removeChild(_this.element);
+        };
+
+        this.appendChild = function (template) {
+          _this.element.appendChild(template.element);
+          template.script();
+        };
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\building_elements\\template.js", "/components\\building_elements");
+  }, { "9FoBSB": 18, "buffer": 16 }], 4: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      module.exports = "   <div class=\"background\"></div>\n<div class=\"widget__container\">\n    <header class=\"widget__header\">\n        <div class=\"header__button\"></div>\n        <div class=\"header__name\">John Doe</div>\n    </header>\n    <div class=\"widget__clock\">\n        <div class=\"hours-container\">\n            <div class=\"hours\"></div>\n        </div>\n        <div class=\"minutes-container\">\n            <div class=\"minutes\"></div>\n        </div>\n    </div>\n    <div class=\"widget__clock-digital\">\n        <div class=\"clock-digital__hour\"></div>\n        <div class=\"clock-digital__date\">January 2nd</div>\n    </div>\n    <div class=\"widget__calendar\">\n        <div class=\"calendar__month\"> \n            <ul>\n                <li>January</li>\n            </ul>\n        </div>  \n        <ul class=\"calendar__days\"> \n            <li>1</li>\n            <li><div class=\"active\">2</div></li>\n            <li>3</li>\n            <li>4</li>\n            <li>5</li>\n            <li>6</li>\n            <li>7</li>\n            <li>8</li>\n            <li>9</li>\n            <li>10</li>\n            <li>11</li>\n            <li>12</li>\n            <li>13</li>\n            <li>14</li>\n            <li>15</li>\n            <li>16</li>\n            <li>17</li>\n            <li>18</li>\n            <li>19</li>\n            <li>20</li>\n            <li>21</li>\n            <li>22</li>\n            <li>23</li>\n            <li>24</li>\n            <li>25</li>\n            <li>26</li>\n            <li>27</li>\n            <li>28</li>\n            <li>29</li>\n            <li>30</li>\n            <li>31</li>\n        </ul>\n        <div class=\"calendar__weekdays\"> \n            <ul>\n                <li>Friday</li>\n            </ul>\n        </div>  \n    </div>\n    <footer class=\"widget__footer\">\n        <div class=\"delete__button\"></div>\n        <div class=\"header__button footer__button footer__button--first\"></div>\n        <div class=\"header__button footer__button footer__button--second\"></div>\n    </footer>\n</div>\n<div class=\"icon__container\">\n    <div class=\"icon \">Y\n        <div class=\"icon__favicon icon__favicon--first\"></div>\n    </div>\n    <div class=\"icon__hover__container\">\n        <div class=\"icon__hover\">Youtube</div>\n        <div class=\"icon__links\">\n            <div class=\"icon__link\">Infokup 2015</div>\n        </div>\n    </div>\n</div>\n<div class=\"icon__container icon__container--second\">\n    <div class=\"icon\">Y\n        <div class=\"icon__favicon icon__favicon--second\"></div>\n    </div>\n    <div class=\"icon__hover__container\">\n        <div class=\"icon__hover\">WhatsApp</div>\n    </div>\n</div>\n</br>\n</br>";
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\desktop-markup.js", "/components\\desktop");
+  }, { "9FoBSB": 18, "buffer": 16 }], 5: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var Template = require('../building_elements/template');
+      var widgets = require('./widgets/widgets-template');
+      var markup = require('./desktop-markup');
+
+      module.exports = new Template({ markup: markup }, function () {});
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\desktop-template.js", "/components\\desktop");
+  }, { "../building_elements/template": 3, "./desktop-markup": 4, "./widgets/widgets-template": 9, "9FoBSB": 18, "buffer": 16 }], 6: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var Template = require('../../building_elements/template');
+      var widgetMng = require('./widget-manager');
+      var widget = require('./widget-generator');
+
+      module.exports = function (data) {
+        return new Template({
+          markup: "<div>\n            Name: {{name}}\n            </br>\n            Author: {{author}}\n            </bar>\n            <button Id='widget__get__{{name}}'>Download</button></div>\n            ",
+          data: data
+        }, function () {
+          var _this2 = this;
+
+          document.getElementById("widget__get__" + this.data.name).addEventListener('click', function () {
+            widgetMng.getWidget(_this2.data.name).then(function (resp) {
+              _this2.appendChild(widget(resp));
+            });
+          });
+        });
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\preview-widget-template-generator.js", "/components\\desktop\\widgets");
+  }, { "../../building_elements/template": 3, "./widget-generator": 7, "./widget-manager": 8, "9FoBSB": 18, "buffer": 16 }], 7: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var Template = require('../../building_elements/template');
+
+      module.exports = function (data) {
+        console.log(data);
+        return new Template({
+          markup: "\n        <iframe id='widget__{{name}}' frameborder=\"0\" scrolling=\"no\"\">\n        </iframe>\n        <style>\n            height: inherit;\n            width: inherit;\n        </style>\n        ",
+          data: data
+        }, function () {
+          var element = document.createElement('wd-widget');
+          element.innerHTML = this.data.code;
+          console.log(document.getElementById("widget__" + this.data.name).contentWindow.eval(element.getElementsByTagName('script')[0].innerHTML));
+          document.getElementById("widget__" + this.data.name).setAttribute('srcdoc', element.getElementsByClassName('widg')[0].innerHTML);
+        });
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widget-generator.js", "/components\\desktop\\widgets");
+  }, { "../../building_elements/template": 3, "9FoBSB": 18, "buffer": 16 }], 8: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      "use strict";
+
+      var request = require('browser-request');
+      var requestHandle = require('../../building_elements/handle-request');
+
+      module.exports = {
+        getWidget: function getWidget(name) {
+          return requestHandle.get("http://127.0.0.1:5000/widget/get?name=" + name);
+        },
+
+        getWidgetList: function getWidgetList() {
+          return requestHandle.get('http://127.0.0.1:5000/widget/get/all');
+        }
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widget-manager.js", "/components\\desktop\\widgets");
+  }, { "../../building_elements/handle-request": 2, "9FoBSB": 18, "browser-request": 15, "buffer": 16 }], 9: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var Template = require('../../building_elements/template');
+      var widgetMng = require('./widget-manager');
+      var widgetPreview = require('./preview-widget-template-generator');
+
+      module.exports = new Template({
+        markup: "<wd-widgets>\n            <button id='w-get'>Get me the widgets</button>\n        </wd-widgets>\n\n        " }, function () {
+        var _this3 = this;
+
+        document.getElementById('w-get').addEventListener('click', function () {
+          widgetMng.getWidgetList().then(function (resp) {
+            resp.forEach(function (element) {
+              _this3.appendChild(widgetPreview(element));
+            });
+          });
+        });
+      });
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widgets-template.js", "/components\\desktop\\widgets");
+  }, { "../../building_elements/template": 3, "./preview-widget-template-generator": 6, "./widget-manager": 8, "9FoBSB": 18, "buffer": 16 }], 10: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      module.exports = function () {
+        document.registerElement('wd-template');
+        document.registerElement('wd-icons');
+        document.registerElement('wd-widgets');
+        document.registerElement('wd-widget');
+      }();
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\init.js", "/components");
+  }, { "9FoBSB": 18, "buffer": 16 }], 11: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var loginTemplate = require('./login-template');
+
+      module.exports = {
+        isLogedIn: function isLogedIn() {
+          return window.localStorage.getItem('user') == null;
+        },
+
+        renderLoginScreen: function renderLoginScreen() {
+          loginTemplate.clearAndRender();
+        }
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\login\\login-controller.js", "/components\\login");
+  }, { "./login-template": 12, "9FoBSB": 18, "buffer": 16 }], 12: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      var Template = require('../building_elements/template');
+      var requestHandle = require('../building_elements/handle-request');
+      var animate = require('../building_elements/animations');
+      var desktop = require('../desktop/desktop-template');
+
+      var markup = "\n    <div class=\"background background--blur\"></div>\n    <div class=\"login__shade\"></div>\n    <div class=\"login__content\">\n        <div class=\"login__container\">\n            <input class=\"input\" type=\"text\" placeholder=\"E-mail\"></input>\n            <input class=\"input\" type=\"password\" placeholder=\"Password\"></input>\n            <div class=\"login__accept\">log in</div>\n            <div class=\"login__signin\">Don't have an account? SIGN UP!</div>\n        </div>\n    </div>\n    ";
+
+      var script = function script() {
+        var _this4 = this;
+
+        var login_button = this.element.getElementsByClassName('login__accept')[0];
+
+        var _document$getElements = document.getElementsByClassName('input'),
+            _document$getElements2 = _slicedToArray(_document$getElements, 2),
+            mail = _document$getElements2[0],
+            password = _document$getElements2[1];
+
+        login_button.addEventListener('click', function () {
+          var url = "http://127.0.0.1:5000/user/get?mail=" + mail.value + "&password=" + password.value;
+          requestHandle.get(url).then(function (res) {
+            localStorage.setItem('user', JSON.stringify(res));
+            animate.fade_out(_this4, 0.4, function () {
+              desktop.clearAndRender();
+            });
+          }).catch(function (err) {
+            console.log(err);
+          });
+        });
+      };
+
+      module.exports = new Template({
+        markup: markup,
+        data: { podatak: 20 }
+      }, script);
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\login\\login-template.js", "/components\\login");
+  }, { "../building_elements/animations": 1, "../building_elements/handle-request": 2, "../building_elements/template": 3, "../desktop/desktop-template": 5, "9FoBSB": 18, "buffer": 16 }], 13: [function (require, module, exports) {
+    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
+      "use strict";
+
+      require('./components/init');
+      var login = require('./components/login/login-controller');
+      var desktop = require('./components/desktop/desktop-template');
+      var animate = require('./components/building_elements/animations');
+
+      window.onload = function () {
+        if (login.isLogedIn()) {
+          login.renderLoginScreen();
+        } else {
+          desktop.clearAndRender();
+        }
+      };
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_d2466d3e.js", "/");
+  }, { "./components/building_elements/animations": 1, "./components/desktop/desktop-template": 5, "./components/init": 10, "./components/login/login-controller": 11, "9FoBSB": 18, "buffer": 16 }], 14: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -132,8 +368,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         exports.toByteArray = b64ToByteArray;
         exports.fromByteArray = uint8ToBase64;
       })(typeof exports === 'undefined' ? this.base64js = {} : exports);
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\node_modules\\base64-js\\lib\\b64.js", "/..\\..\\node_modules\\base64-js\\lib");
-  }, { "buffer": 3, "e/U+97": 5 }], 2: [function (require, module, exports) {
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\..\\node_modules\\base64-js\\lib\\b64.js", "/..\\..\\..\\node_modules\\base64-js\\lib");
+  }, { "9FoBSB": 18, "buffer": 16 }], 15: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       // Browser Request
       //
@@ -602,8 +838,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         //UMD FOOTER START
       });
       //UMD FOOTER END
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\node_modules\\browser-request\\index.js", "/..\\..\\node_modules\\browser-request");
-  }, { "buffer": 3, "e/U+97": 5 }], 3: [function (require, module, exports) {
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\..\\node_modules\\browser-request\\index.js", "/..\\..\\..\\node_modules\\browser-request");
+  }, { "9FoBSB": 18, "buffer": 16 }], 16: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       /*!
        * The buffer module from node.js, for the browser.
@@ -1648,8 +1884,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       function assert(test, message) {
         if (!test) throw new Error(message || 'Failed assertion');
       }
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\node_modules\\buffer\\index.js", "/..\\..\\node_modules\\buffer");
-  }, { "base64-js": 1, "buffer": 3, "e/U+97": 5, "ieee754": 4 }], 4: [function (require, module, exports) {
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\..\\node_modules\\buffer\\index.js", "/..\\..\\..\\node_modules\\buffer");
+  }, { "9FoBSB": 18, "base64-js": 14, "buffer": 16, "ieee754": 17 }], 17: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       exports.read = function (buffer, offset, isLE, mLen, nBytes) {
         var e, m;
@@ -1735,8 +1971,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         buffer[offset + i - d] |= s * 128;
       };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\node_modules\\ieee754\\index.js", "/..\\..\\node_modules\\ieee754");
-  }, { "buffer": 3, "e/U+97": 5 }], 5: [function (require, module, exports) {
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\..\\node_modules\\ieee754\\index.js", "/..\\..\\..\\node_modules\\ieee754");
+  }, { "9FoBSB": 18, "buffer": 16 }], 18: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       // shim for using process in browser
 
@@ -1802,210 +2038,5 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       process.chdir = function (dir) {
         throw new Error('process.chdir is not supported');
       };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\node_modules\\process\\browser.js", "/..\\..\\node_modules\\process");
-  }, { "buffer": 3, "e/U+97": 5 }], 6: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var Template = require('../template');
-      var requestHandle = require('../handle-request');
-
-      module.exports = new Template({
-        markup: "\n            <input type='text' id='login-mail'> Mail</input>\n            </br>\n            <input type='password' id='login-password'> Password</input>\n            </br>\n            <button id='login'>Login</button>\n            ",
-        data: { podatak: 20 }
-      }, function () {
-        document.getElementById('login').addEventListener('click', function () {
-          var mail = document.getElementById('login-mail').value;
-          var password = document.getElementById('login-password').value;
-          var url = "http://127.0.0.1:5000/user/get?mail=" + mail + "&password=" + password;
-          requestHandle.get(url).then(function (res) {
-            localStorage.setItem('user', JSON.stringify(res));
-            location.reload();
-          }).catch(function (err) {
-            console.log(err);
-          });
-        });
-      });
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\auth\\auth-template.js", "/components\\auth");
-  }, { "../handle-request": 13, "../template": 15, "buffer": 3, "e/U+97": 5 }], 7: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var authTemplate = require('./auth-template');
-
-      module.exports = {
-        authNeeded: function authNeeded() {
-          return window.localStorage.getItem('user') == null;
-        },
-
-        renderAuth: function renderAuth() {
-          authTemplate.clearAndRender();
-        }
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\auth\\auth.js", "/components\\auth");
-  }, { "./auth-template": 6, "buffer": 3, "e/U+97": 5 }], 8: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var Template = require('../template');
-      var widgets = require('./widgets/widgets-template');
-
-      module.exports = new Template({
-        markup: "\n        <wd-icons></wd-icons>\n    "
-      }, function () {
-        this.appendChild(widgets);
-      });
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\desktop-template.js", "/components\\desktop");
-  }, { "../template": 15, "./widgets/widgets-template": 12, "buffer": 3, "e/U+97": 5 }], 9: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var Template = require('../../template');
-      var widgetMng = require('./widget-manager');
-      var widget = require('./widget-generator');
-
-      module.exports = function (data) {
-        return new Template({
-          markup: "<div>\n            Name: {{name}}\n            </br>\n            Author: {{author}}\n            </bar>\n            <button Id='widget__get__{{name}}'>Download</button></div>\n            ",
-          data: data
-        }, function () {
-          var _this = this;
-
-          document.getElementById("widget__get__" + this.data.name).addEventListener('click', function () {
-            widgetMng.getWidget(_this.data.name).then(function (resp) {
-              _this.appendChild(widget(resp));
-            });
-          });
-        });
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\preview-widget-template-generator.js", "/components\\desktop\\widgets");
-  }, { "../../template": 15, "./widget-generator": 10, "./widget-manager": 11, "buffer": 3, "e/U+97": 5 }], 10: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var Template = require('../../template');
-
-      module.exports = function (data) {
-        console.log(data);
-        return new Template({
-          markup: "\n        <iframe id='widget__{{name}}' frameborder=\"0\" scrolling=\"no\"\">\n        </iframe>\n        <style>\n            height: inherit;\n            width: inherit;\n        </style>\n        ",
-          data: data
-        }, function () {
-          var element = document.createElement('wd-widget');
-          element.innerHTML = this.data.code;
-          console.log(document.getElementById("widget__" + this.data.name).contentWindow.eval(element.getElementsByTagName('script')[0].innerHTML));
-          document.getElementById("widget__" + this.data.name).setAttribute('srcdoc', element.getElementsByClassName('widg')[0].innerHTML);
-        });
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widget-generator.js", "/components\\desktop\\widgets");
-  }, { "../../template": 15, "buffer": 3, "e/U+97": 5 }], 11: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      "use strict";
-
-      var request = require('browser-request');
-      var requestHandle = require('../../handle-request');
-
-      module.exports = {
-        getWidget: function getWidget(name) {
-          return requestHandle.get("http://127.0.0.1:5000/widget/get?name=" + name);
-        },
-
-        getWidgetList: function getWidgetList() {
-          return requestHandle.get('http://127.0.0.1:5000/widget/get/all');
-        }
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widget-manager.js", "/components\\desktop\\widgets");
-  }, { "../../handle-request": 13, "browser-request": 2, "buffer": 3, "e/U+97": 5 }], 12: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var Template = require('../../template');
-      var widgetMng = require('./widget-manager');
-      var widgetPreview = require('./preview-widget-template-generator');
-
-      module.exports = new Template({
-        markup: "<wd-widgets>\n            <button id='w-get'>Get me the widgets</button>\n        </wd-widgets>\n\n        " }, function () {
-        var _this2 = this;
-
-        document.getElementById('w-get').addEventListener('click', function () {
-          widgetMng.getWidgetList().then(function (resp) {
-            resp.forEach(function (element) {
-              _this2.appendChild(widgetPreview(element));
-            });
-          });
-        });
-      });
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\desktop\\widgets\\widgets-template.js", "/components\\desktop\\widgets");
-  }, { "../../template": 15, "./preview-widget-template-generator": 9, "./widget-manager": 11, "buffer": 3, "e/U+97": 5 }], 13: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      var request = require('browser-request');
-
-      module.exports = {
-        get: function get(url) {
-          return new Promise(function (resolve, reject) {
-            request.get(url, function (err, res, body) {
-              body = JSON.parse(body);
-              if (err) reject(err);else if (body.Error) reject(body.Error);else resolve(body);
-            });
-          });
-        }
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\handle-request.js", "/components");
-  }, { "browser-request": 2, "buffer": 3, "e/U+97": 5 }], 14: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      module.exports = function () {
-        document.registerElement('wd-template');
-        document.registerElement('wd-icons');
-        document.registerElement('wd-widgets');
-        document.registerElement('wd-widget');
-      }();
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\init.js", "/components");
-  }, { "buffer": 3, "e/U+97": 5 }], 15: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      module.exports = function Template(_ref, script) {
-        var _this3 = this;
-
-        var markup = _ref.markup,
-            data = _ref.data;
-
-
-        for (var key in data) {
-          var replace = "{{" + key + "}}";
-          markup = markup.replace(new RegExp(replace, 'g'), data[key]);
-        }
-
-        this.script = script.bind(this);
-        this.data = data;
-        this.element = document.createElement('wd-template');
-        this.element.innerHTML = markup;
-
-        this.addToRender = function () {
-          document.getElementById('render').appendChild(_this3.element);
-          _this3.script();
-        };
-
-        this.clearAndRender = function () {
-          document.getElementById('render').innerHTML = '';
-          document.getElementById('render').appendChild(_this3.element);
-          _this3.script();
-        };
-
-        this.clearSelf = function () {
-          _this3.element.innerHTML = '';
-        };
-
-        this.removeFromDocument = function () {
-          document.body.removeChild(_this3.element);
-        };
-
-        this.appendChild = function (template) {
-          _this3.element.appendChild(template.element);
-          template.script();
-        };
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/components\\template.js", "/components");
-  }, { "buffer": 3, "e/U+97": 5 }], 16: [function (require, module, exports) {
-    (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      "use strict";
-
-      require('./components/init');
-      var auth = require('./components/auth/auth');
-      var desktop = require('./components/desktop/desktop-template');
-
-      window.onload = function () {
-        if (auth.authNeeded()) {
-          auth.renderAuth();
-        } else {
-          desktop.clearAndRender();
-        }
-      };
-    }).call(this, require("e/U+97"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_ed346c1e.js", "/");
-  }, { "./components/auth/auth": 7, "./components/desktop/desktop-template": 8, "./components/init": 14, "buffer": 3, "e/U+97": 5 }] }, {}, [16]);
+    }).call(this, require("9FoBSB"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/..\\..\\..\\node_modules\\process\\browser.js", "/..\\..\\..\\node_modules\\process");
+  }, { "9FoBSB": 18, "buffer": 16 }] }, {}, [13]);
