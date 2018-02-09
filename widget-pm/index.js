@@ -16,7 +16,7 @@ program
 program
     .command('push')
     .action(() => {
-            push();
+            console.log(push());
     });
 
 program

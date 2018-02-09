@@ -441,15 +441,38 @@ template {
   display: none; }
 
 .icon__container {
+  z-index: 3;
   top: 0px;
-  position: absolute;
+  left: 0px;
+  position: relative;
   display: inline-block;
-  margin: 20px 0;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  color: #4f4f4f; }
+  color: #4f4f4f;
+  margin: 1px 1px 1px 1px; }
+
+.folder__container {
+  z-index: 3;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  display: inline-block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #4f4f4f;
+  margin: 1px 1px 1px 1px;
+  margin-top: 25px; }
+
+.wd__icons {
+  position: absolute;
+  display: inline-block;
+  margin-left: 300px;
+  width: 80vw;
+  height: 94vh; }
 
 .icon {
   position: relative;
@@ -473,8 +496,9 @@ template {
        background-size: cover; }
 
 .icon__hover__container {
-  z-index: 10;
-  position: relative;
+  z-index: 11;
+  position: absolute;
+  left: 49px;
   float: right;
   text-align: center;
   -webkit-transition: all ease-in-out 0.2s;
@@ -498,7 +522,9 @@ template {
      -moz-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
-  font-weight: 800; }
+  font-weight: 800;
+  overflow-y: hidden;
+  overflow-x: auto; }
 
 .icon:hover + .icon__hover__container {
   height: 48px;
@@ -584,22 +610,14 @@ template {
 .icon__container__second {
   left: 320px; }
 
-.icon__favicon--first {
-  background-image: url("../assets/youtube.svg"); }
-
 .icon__favicon--second {
   background-image: url("file:///C:/Users/Barty/Downloads/whatsapp.svg"); }
 
 .icon__favicon--third {
   background-image: url("../assets/instagram.svg"); }
 
-.icon__container--second {
-  left: 355px; }
-
-.icon__container--third {
-  left: 423px; }
-
 .widget__container {
+  position: absolute;
   width: 241.5px;
   height: 720px;
   margin: 20px 20px 20px 20px;
@@ -963,7 +981,7 @@ ul {
   width: 100%;
   height: 44px;
   font-size: 17px;
-  color: #e1e1e1;
+  color: black;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -994,6 +1012,9 @@ ul {
 
 .login__accept:hover {
   background-color: #f05668; }
+
+.login__accept:active {
+  background-color: #f26d7d; }
 
 .shop__container {
   width: 220px;

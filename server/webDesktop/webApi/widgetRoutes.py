@@ -32,13 +32,9 @@ def add_widget():
 
 @widget_routes.route('/publish', methods=['POST'])
 def publish_widget():
+    print(request.form)
     request.form = form_data_normalizer(request.form)
     return jsonify(DbWidgetController().publish_widget(**request.form))
-
-
-@widget_routes.route('/push', methods=['POST'])
-def push_widget():
-    return jsonify(DbWidgetController().get_widget(request.args['name']))
 
 
 @widget_routes.route('/get', methods=['GET'])

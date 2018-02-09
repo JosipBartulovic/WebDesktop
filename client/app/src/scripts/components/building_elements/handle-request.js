@@ -10,5 +10,15 @@ module.exports = {
                 else resolve(body);
             })
         })
+    },
+
+    post: function(url, data){
+        return new Promise((resolve, reject) => {
+            request.post({url: url, form: data}, function(err, httpResponse, body){
+                if(err) reject(err);
+                else if(body.Error) reject(body.Error);
+                else resolve(body);
+            });
+        });
     }
 }

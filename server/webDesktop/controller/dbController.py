@@ -32,12 +32,20 @@ class DbUserController:
             )
         )
 
+    def update_icons(self, user, icons):
+        user.icons = icons
+        print(user.icons)
+        self.update_user(user)
+        return True
+
     def update_user(self, user):
             self.db.Users.update({'mail': user.mail}, {'$set': dict(user.iterator(dto=False))})
 
-    def add_icon_to_user(self, icon, user):
+    def add_icon_to_user(self, icon):
+        user = self.get_user_object(icon.user_mail)
         user.add_icon(icon)
         self.update_user(user)
+        return True
 
 
 class DbWidgetController:

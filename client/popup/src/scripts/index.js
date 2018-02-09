@@ -16,11 +16,18 @@ function postIcon(tab){
         url: tab.url,
         name: tab.title,
         user_mail: JSON.parse(window.localStorage.getItem('user')).mail,
-        image_url: tab.favIconUrl
+        image_url: tab.favIconUrl,
+        type: 'icon',
+        child: [],
+        position: [0,0]
     };
-    console.log(icon);
+
     requestHandle.post('http://127.0.0.1:5000/user/append_icon', icon)
         .then((res) => {
             console.log(res);
+            let user = JSON.parse(window.localStorage.getItem('user'));
+            user.icons.push(icon);
+            console.log(user)
+            window.localStorage.setItem('user', JSON.stringify(user));
         });
 }

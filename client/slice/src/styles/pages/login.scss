@@ -38,7 +38,7 @@
     width: 100%;
     height: 44px;
     font-size: 17px;
-    color: $gray;
+    color: black;
     box-sizing: border-box;
     outline: none;
     padding: 13.5px 0 13.5px 22px;
@@ -65,4 +65,8 @@
 }
 .login__accept:hover{
     background-color: darken($red, 5%);
+}
+
+.login__accept:active{
+    background-color: $red;
 }

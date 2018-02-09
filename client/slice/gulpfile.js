@@ -17,7 +17,8 @@ gulp.task('compileSass', function () {
         .pipe(gulp.dest('./dist/'))
         .pipe(cleanCSS())
         .pipe(rename('main.min.css'))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/'))
+        .pipe(gulp.dest('../app/dist/styles'));
 });
 
 gulp.task('watch', function () {
