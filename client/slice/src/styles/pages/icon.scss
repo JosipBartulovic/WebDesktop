@@ -1,30 +1,33 @@
 .icon__container{
-    z-index: 3;
+    z-index: 1;
     top: 0px;
     left: 0px;
-    position: relative;
+    position: absolute;
     display: inline-block;
     user-select: none;
     color: $black;
     margin: 1px 1px 1px 1px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .folder__container{
-    z-index: 3;
+    z-index: 1;
     top: 0px;
     left: 0px;
-    position: relative;
+    position: absolute;
     display: inline-block;
     user-select: none;
     color: $black;
     margin: 1px 1px 1px 1px;
-    margin-top: 25px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .wd__icons{
     position: absolute;
     display: inline-block;
-    margin-left: 300px;
+    margin-left: 265px;
     width: 80vw;
     height: 94vh;
 }
@@ -49,7 +52,7 @@
     background-size: cover;
 }
 .icon__hover__container{
-    z-index: 11;
+    z-index: 100;
     position: absolute;
     left: 49px;
     float: right;
