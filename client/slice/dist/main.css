@@ -622,7 +622,7 @@ template {
 .widget__container {
   position: absolute;
   width: 241.5px;
-  height: 720px;
+  height: 95vh;
   margin: 20px 20px 20px 20px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
