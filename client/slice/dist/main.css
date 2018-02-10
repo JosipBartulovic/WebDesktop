@@ -878,7 +878,8 @@ ul {
           box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 2;
-  cursor: pointer; }
+  cursor: pointer;
+  display: none; }
 
 .footer__button {
   background-color: #e1e1e1;
@@ -919,6 +920,28 @@ ul {
           flex-grow: 1;
   background-image: url("../assets/back.svg");
   cursor: pointer; }
+
+.folder__naming {
+  height: 100%;
+  width: 165.5px;
+  background-color: #e1e1e1;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+     -moz-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  padding-left: 10px;
+  line-height: 100%;
+  color: #4f4f4f; }
+
+.folder__naming:focus {
+  background-color: #d4d4d4; }
 
 .background {
   width: 100vw;

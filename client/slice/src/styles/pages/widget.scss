@@ -191,6 +191,7 @@ ul {
     position: relative;
     z-index: 2;
     cursor: pointer;
+    display: none;
 }
 .footer__button{
     background-color: $gray;
@@ -223,4 +224,23 @@ ul {
     flex-grow: 1;
     background-image: url("../assets/back.svg");
     cursor: pointer;
+}
+.folder__naming{
+    height: 100%;
+    width: 165.5px;
+    background-color: $gray;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    padding-left: 10px;
+    line-height: 100%;
+    color: $black;
+
+}
+.folder__naming:focus{
+    background-color: darken($gray, 5%)
 }
