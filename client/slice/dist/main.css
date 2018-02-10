@@ -441,23 +441,10 @@ template {
   display: none; }
 
 .icon__container {
-  z-index: 3;
+  z-index: 1;
   top: 0px;
   left: 0px;
-  position: relative;
-  display: inline-block;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  color: #4f4f4f;
-  margin: 1px 1px 1px 1px; }
-
-.folder__container {
-  z-index: 3;
-  top: 0px;
-  left: 0px;
-  position: relative;
+  position: absolute;
   display: inline-block;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -465,12 +452,28 @@ template {
           user-select: none;
   color: #4f4f4f;
   margin: 1px 1px 1px 1px;
-  margin-top: 25px; }
+  margin-left: 20px;
+  margin-top: 20px; }
+
+.folder__container {
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  display: inline-block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #4f4f4f;
+  margin: 1px 1px 1px 1px;
+  margin-left: 20px;
+  margin-top: 20px; }
 
 .wd__icons {
   position: absolute;
   display: inline-block;
-  margin-left: 300px;
+  margin-left: 265px;
   width: 80vw;
   height: 94vh; }
 
@@ -496,7 +499,7 @@ template {
        background-size: cover; }
 
 .icon__hover__container {
-  z-index: 11;
+  z-index: 100;
   position: absolute;
   left: 49px;
   float: right;
@@ -523,8 +526,8 @@ template {
           box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   font-weight: 800;
-  overflow-y: hidden;
-  overflow-x: auto; }
+  overflow-y: none;
+  overflow-x: none; }
 
 .icon:hover + .icon__hover__container {
   height: 48px;
@@ -1034,7 +1037,8 @@ ul {
   -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1);
-  overflow: none; }
+  overflow: none;
+  margin-right: 0px; }
 
 .shop__header {
   background-color: #f26d7d;
